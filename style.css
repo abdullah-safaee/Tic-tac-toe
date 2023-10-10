@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* controls */
+
+.controls{
+    position: sticky;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    top: 0;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: calc(.9rem + .9vw);
+    font-family: sans-serif;
+    font-weight: light;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+    align-items: center;
+    row-gap: 1rem;
+    column-gap: 2rem; 
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.controls > div{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.controls > .playing-style button{
+    border: 1px solid rebeccapurple;
+    background-color: white;
+    padding: .3rem;
+    border-radius: .2rem;
+    transition: .1s;
+    color: rebeccapurple;
+    cursor: pointer;
+}
+
+.controls > .playing-style span{
+    color: rebeccapurple;
+}
+
+.controls > .chosen-marker button{
+    border: 1px solid rebeccapurple;
+    background-color: white;
+    padding: .3rem;
+    border-radius: .2rem;
+    transition: .1s;
+    color: rebeccapurple;
+    cursor: pointer;
+}
+
+.controls > .chosen-marker span{
+    color: rebeccapurple;
+}
+
+.controls button.selected{
+    background-color: rebeccapurple;
+    color: white;
+}
+
+/* gameBoard */
+
+.game-board{
+    margin-top: 5rem;
+    background-color: rebeccapurple;
+    display: inline-grid;
+    grid-template-columns: repeat(3,auto);
+    gap: 1px;
+    justify-content: center;
+}
+
+.game-board > .cell{
+    color: rebeccapurple;
+    background-color: white;
+    font-family: sans-serif;
+    padding: .5rem;
+    text-align: center;
+    font-size: calc(2.5rem + 2vw);
+    min-width: calc(3rem + 2vw);
+    min-height: calc(3rem + 2vw)
+}
