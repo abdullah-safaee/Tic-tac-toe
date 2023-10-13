@@ -13,6 +13,33 @@ winner.querySelector('.close').addEventListener('click',function(){
     resetBoard()
 })
 
+gameBoard.addEventListener('click',function(e){
+    if(e.target.matches('.cell') && e.target.textContent === ''){
+        if(controls.querySelector('.playing-style button.selected').value === 'computer')
+        {
+            placeMarker(e.target)
+
+        }
+        else{
+            e.target.textContent = currentMarker
+            if(checkWinner() === 'x'){
+                congratulateX()
+            }
+            else if(checkWinner() ==='o'){
+                congratulateO()
+            }
+            else{
+                if(!checkDraw()){
+                    declareDraw()
+                }
+                else{
+                    switchPlayer()
+                }
+            }
+        }
+    }
+})
+
 chooseComputerButton.addEventListener('click',function(){
     if(controls.querySelector('.playing-style button.selected') !== this){
         choosePlayerButton.classList.toggle('selected')
@@ -47,32 +74,6 @@ chooseOButton.addEventListener('click',function(){
     }
 })
 
-gameBoard.addEventListener('click',function(e){
-    if(e.target.matches('.cell') && e.target.textContent === ''){
-        if(controls.querySelector('.playing-style button.selected').value === 'computer')
-        {
-            placeMarker(e.target)
-
-        }
-        else{
-            e.target.textContent = currentMarker
-            if(checkWinner === 'x'){
-                congratulateX()
-            }
-            else if(checkWinner() ==='o'){
-                congratulateO()
-            }
-            else{
-                if(!checkDraw()){
-                    declareDraw()
-                }
-                else{
-                    switchPlayer()
-                }
-            }
-        }
-    }
-})
 
 function congratulateO(){
     winner.querySelector('.result').textContent = "O wins"
@@ -145,10 +146,8 @@ function resetBoard(){
 }
 
 function checkDraw(){
-    // console.log(cells)
-    let emptyCell = true
         for (const cell in Array.from(cells)) {
-            if (cells[cell].textContent === '') {return true}
+            if (Array.from(cells)[cell].textContent === '') {return true}
         }
         declareDraw()
         resetBoard()
